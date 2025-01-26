@@ -1,15 +1,10 @@
 import torch
 import os
-import nltk
+import re
 import torch.nn as nn
-from nltk.tokenize import word_tokenize
 import numpy as np
 import pickle
 from flask import Flask, request, jsonify
-
-nltk_data_dir = "/opt/render/project/src/nltk_data"
-
-nltk.download('punkt_tab', download_dir=nltk_data_dir)
 
 # Define the Flask app
 app = Flask(__name__)
@@ -70,7 +65,7 @@ def predict():
         # Vectorize and tokenize posts
         post_vectors = []
         for post in posts:
-            tokens = word_tokenize(post)
+            tokens = re.findall(r"\w+|[^\w\s]", post)
             vector = vectorize_post(tokens, loaded_embedding_matrix, max_len=50)
             post_vectors.append(vector)
 
