@@ -1,1 +1,1 @@
-web: python main.py
+web: setup.bat && python main.py
