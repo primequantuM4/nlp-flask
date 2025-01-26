@@ -12,7 +12,7 @@ prediction_service = PredictionService()
 
 
 class Request(BaseModel):
-    posts: List = []
+    posts: List[str] = []
 
 
 class SinglePrediction(BaseModel):
