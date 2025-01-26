@@ -1,4 +1,5 @@
 import torch
+import os
 import nltk
 import torch.nn as nn
 from nltk.tokenize import word_tokenize
@@ -93,4 +94,5 @@ def predict():
 
 # Run the Flask app
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
