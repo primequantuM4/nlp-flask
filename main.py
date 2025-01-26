@@ -7,7 +7,9 @@ import numpy as np
 import pickle
 from flask import Flask, request, jsonify
 
-nltk.download('punkt_tab')
+nltk_data_dir = "/opt/render/project/src/nltk_data"
+
+nltk.download('punkt_tab', download_dir=nltk_data_dir)
 
 # Define the Flask app
 app = Flask(__name__)
