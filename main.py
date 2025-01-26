@@ -12,7 +12,7 @@ prediction_service = PredictionService()
 
 
 class Request(BaseModel):
-    text: List = []
+    posts: List = []
 
 
 class SinglePrediction(BaseModel):
@@ -39,7 +39,7 @@ app.add_middleware(
 @app.post("/predict")
 def predict(request: Request) -> Response:
     # Get posts from the request JSON
-    posts = request.text
+    posts = request.posts
 
     if not posts:
         raise HTTPException(status_code=400, detail="No posts provided")
