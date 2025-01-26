@@ -16,6 +16,11 @@ nltk.data.path.append(nltk_data_path)
 nltk.download('wordnet', download_dir=nltk_data_path)
 nltk.download('punkt', download_dir=nltk_data_path)
 
+try:
+    nltk.data.find('corpora/wordnet')
+except LookupError:
+    print("Wordnet resource not found. Downloading...")
+    nltk.download('wordnet', download_dir=nltk_data_path)
 
 # Define the Flask app
 app = Flask(__name__)
